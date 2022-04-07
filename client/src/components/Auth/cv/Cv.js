@@ -7,6 +7,7 @@ import Info from "./Info";
 import Education from "./Education";
 import Experience from "./Experience";
 import Skills from "./Skills";
+import CvPdf from "./CvPdf";
 
 const Cv=()=> {
 
@@ -44,10 +45,15 @@ const Cv=()=> {
 
   return (
     <Container component="main" maxWidth="xs">
-        <div className="progressbar">
-            <div style={{ width: page === 0 ? "25%" : page === 1 ? "50%" : page === 2 ? "75%" : "100%" }}></div>
-        </div>
+
         <Paper className={classes.paper} elevation={3}>
+            <CvPdf />
+        </Paper>
+
+        <Paper className={classes.paper} elevation={3}>
+            <div className="progressbar">
+                <div style={{ width: page === 0 ? "25%" : page === 1 ? "50%" : page === 2 ? "75%" : "100%" }}></div>
+            </div>
             <Typography variant= "h5">{FormTitles[page]}</Typography>
             <form className={classes.form} onSubmit={handleSubmit}>
                 <Grid container spacing={2}>
