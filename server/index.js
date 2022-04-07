@@ -14,7 +14,7 @@ const app= express();
 dotenv.config();
 app.use(cors());
 app.use('/posts',postRoutes);
-app.use('/user',userRoutes);
+app.use('/users',userRoutes);
 
 
 
