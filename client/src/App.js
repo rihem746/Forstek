@@ -6,6 +6,8 @@ import { BrowserRouter , Switch , Route } from 'react-router-dom';
 
 import Navbar from './components/Navbar/Navbar';
 import Inscription from './components/Auth/Inscription';
+import Profile from './components/Auth/donneePersonelle/Profile';
+import Cv from './components/Auth/cv/Cv';
 
 const  App =() => {
 
@@ -19,6 +21,10 @@ const  App =() => {
            <Route path="/" exact component={Home} />
            <Route path="/auth" exact component={Auth} />
            <Route path="/inscription" exact component={Inscription} />
+
+           <Route path="/profiledata" exact component={Profile} />
+           <Route path="/cv" exact component={Cv} />
+
          </Switch>
      
         </Container>
