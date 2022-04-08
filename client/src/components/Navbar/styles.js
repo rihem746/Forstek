@@ -25,12 +25,20 @@ export default makeStyles((theme) => ({
   },
   profile: {
     display: 'flex',
-    justifyContent: 'space-between',
+    justifyContent: 'flex-end',
     width: '400px',
   },
+  profileData:{
+    display:'block',
+    padding:'0 20px',
+    width:'400px',
+  },
   userName: {
-    display: 'flex',
-    alignItems: 'center',
+    fontSize: '0.8rem',
+    letterSpacing: '0.079em',
+    fontWeight: '400',
+    margin : 'auto',
+    textAlign: 'center',
   },
   brandContainer: {
     display: 'flex',
@@ -39,5 +47,20 @@ export default makeStyles((theme) => ({
   purple: {
     color: theme.palette.getContrastText(deepPurple[500]),
     backgroundColor: deepPurple[500],
-  },
+    margin : 'auto',
+  },logout:{
+    width:'100%',
+    padding:'0 10px',
+
+    fontSize: '0.8rem',
+    letterSpacing: '0.079em',
+    fontWeight: '700',
+    margin : '5px',
+    textAlign: 'center',
+
+    backgroundColor:'#da372e',
+
+    color:'#fff'
+
+  }
 }));
