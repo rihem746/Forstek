@@ -18,8 +18,8 @@ app.use('/users',userRoutes);
 
 
 
-app.use(bodyParser.json ({limit: "30mb" , extended: true}));
-app.use(bodyParser.urlencoded({limit: "30mb" , extended: true}));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: false}));
 
 
 

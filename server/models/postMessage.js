@@ -16,7 +16,7 @@ const postSchema = mongoose.Schema({
 
     },
 });
-
+//nesh nwali nzidha categories annd tags . 
 const PostMessage = mongoose.model('PostMessage', postSchema);
 
 export default PostMessage;

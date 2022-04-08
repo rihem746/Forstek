@@ -45,6 +45,8 @@ const Form = ({currentId, setCurrentId}) => {
          <Input name="entreprise" label="Entreprise"handleChange ={handleChange} />
          <Input name="type" label="Type"handleChange ={handleChange} />
          <Input name="localisation" label="Localisation"handleChange ={handleChange} />
+         <Input name="description" label="Description"handleChange ={handleChange} />
+
          <Button className={classes.buttonSubmit} variant="contained" color="primary" size="large" type="submit" fullWidth>Submit</Button>
         <Button variant="contained" color="secondary" size="small" onClick={clear} fullWidth>Clear</Button>
       </form>

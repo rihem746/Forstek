@@ -14,8 +14,10 @@ export const getPosts = async (req,res) => {
 
 export const createPost = async (req,res) =>{
     const post=req.body;
+    console.log(req);
 
-    const newPost= new PostMessage(post);
+    const newPost= new PostMessage( post.post);
+    
 
     try {
          await newPost.save();
@@ -48,6 +50,7 @@ export const deletePost = async(req,res)=> {
    res.json({message: 'Post deleted successfuly'});
    
 }
+
 export const likePost = async (req,res) => {
     const{id}= req.params;
    if(!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send('No post with that id!');
