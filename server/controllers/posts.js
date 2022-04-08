@@ -16,12 +16,13 @@ export const createPost = async (req,res) =>{
     const post=req.body;
     console.log(req);
 
-    const newPost= new PostMessage( post.post);
-    
+
+    const newPost= new PostMessage(post.post);
+
 
     try {
          await newPost.save();
-
+console.log("body  <<<  ",post);
         res.status(201).json(newPost);
 
     } catch (error) {
