@@ -17,7 +17,6 @@ const Post = ({post ,setCurrentId}) => {
     return ( 
         <Card className={classes.Card}>
           <CardHeader
-<<<<<<< HEAD
             action={
               <Button size="small" color="secondary" onClick={()=>dispatch(deletePost(post._id))}>
                 <DeleteIcon />
@@ -33,44 +32,13 @@ const Post = ({post ,setCurrentId}) => {
             </CardContent>
 
 
-        <CardActions disableSpacing >
+        <CardActions disableSpacing className={classes.cardActions}>
           <Button size="small" color="primary" onClick={()=>dispatch(likePost(post._id))}>
             <IconButton aria-label="add to favorites">
               <FavoriteIcon color="secondary"/>
             </IconButton>
                 {post.likes}
-          </Button>
-=======
-          action={
-            <Button size="small" color="primary" onClick={()=>dispatch(deletePost(post._id))}>
-            <DeleteIcon fontSize='small'/>
-            
-           
-        </Button>
-          }
-          title={post.job}
-          subheader={post.name}
-        />
-           
-           
-           <CardContent>
-              <Typography variant='body2'>{moment(post.date).fromNow()}</Typography>
-              <Typography className={classes.title}
-               variant='h5' color="textSecondary">{post.description}</Typography>
-           </CardContent>
-           <CardActions className={classes.cardActions}>
-               <Button size="small" color="primary" onClick={()=>dispatch(likePost(post._id))}>
-                   <ThumbUpAltIcon  fontSize='small'/>
-                   J'aime
-                   {post.likes}
-               </Button>
-              
-              <Button style={{color:'white'}} size="small" onClick={()=>setCurrentId(post._id)}>
-                 <MoreHorizonIcon fontSize='default'  />
-                  </Button>  
-              
->>>>>>> aa8b622698d7171f3ea854121cccd6c84ab98bc2
-              
+          </Button>           
           <Button style={{color:'white'}} size="small" onClick={()=>setCurrentId(post._id)}>
             <MoreHorizonIcon fontSize='default'  />
           </Button>  
