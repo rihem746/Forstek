@@ -31,7 +31,7 @@ export default makeStyles((theme) => ({
   profileData:{
     display:'block',
     padding:'0 20px',
-    width:'400px',
+    width:'100%',
   },
   userName: {
     fontSize: '0.8rem',
