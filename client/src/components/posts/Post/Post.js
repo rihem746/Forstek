@@ -6,6 +6,8 @@ import moment from 'moment';
 import IconButton from "@material-ui/core/IconButton";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import usesStyles from './styles';
+import ThumbUpAltIcon  from '@material-ui/icons/ThumbUpAlt';
+import ThumbUpAltOutlined from '@material-ui/icons/ThumbUpAltOutlined';
 
 import {useDispatch} from 'react-redux';
 import {deletePost , likePost} from '../../../actions/posts';
@@ -14,10 +16,25 @@ import {deletePost , likePost} from '../../../actions/posts';
 const Post = ({post ,setCurrentId}) => {
     const classes=usesStyles();
     const dispatch = useDispatch();
+    const Likes = ()=> {
+      if(post.likes.length >0) {
+        return post.likes.find((like)=>like===(user?.result?.googleId || user?.result?._id))
+         ? (
+           <><ThumbUpAltIcon fontSize='small' />&nbsp;{post.likes.length >2 `Vous et ${post.likes.length -1} autres` } `${post.likes.length} like${post.likes.length >1 ? 's' : ''} ` 
+           </>
+         ):(
+           <><ThumbUpAltOutlined  fontSize='small'/>&nbsp;{post.likes.length} {post.likes.length ===1 ? 'Like' : 'Likes' }
+           </>
+         )
+      }
+      return <> <ThumbUpAltOutlined fontSize='small' />&nbsp; Like</>
+    };
+  
+
     return ( 
         <Card className={classes.Card}>
           <CardHeader
-<<<<<<< HEAD
+
             action={
               <Button size="small" color="secondary" onClick={()=>dispatch(deletePost(post._id))}>
                 <DeleteIcon />
@@ -40,36 +57,11 @@ const Post = ({post ,setCurrentId}) => {
             </IconButton>
                 {post.likes}
           </Button>
-=======
-          action={
-            <Button size="small" color="primary" onClick={()=>dispatch(deletePost(post._id))}>
-            <DeleteIcon fontSize='small'/>
-            
-           
-        </Button>
-          }
-          title={post.job}
-          subheader={post.name}
-        />
-           
-           
-           <CardContent>
-              <Typography variant='body2'>{moment(post.date).fromNow()}</Typography>
-              <Typography className={classes.title}
-               variant='h5' color="textSecondary">{post.description}</Typography>
-           </CardContent>
-           <CardActions className={classes.cardActions}>
-               <Button size="small" color="primary" onClick={()=>dispatch(likePost(post._id))}>
-                   <ThumbUpAltIcon  fontSize='small'/>
-                   J'aime
-                   {post.likes}
-               </Button>
+
+          
+          
               
-              <Button style={{color:'white'}} size="small" onClick={()=>setCurrentId(post._id)}>
-                 <MoreHorizonIcon fontSize='default'  />
-                  </Button>  
-              
->>>>>>> aa8b622698d7171f3ea854121cccd6c84ab98bc2
+
               
           <Button style={{color:'white'}} size="small" onClick={()=>setCurrentId(post._id)}>
             <MoreHorizonIcon fontSize='default'  />
