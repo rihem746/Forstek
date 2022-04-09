@@ -14,11 +14,13 @@ export const getPosts = async (req,res) => {
 
 export const createPost = async (req,res) =>{
     const post=req.body;
-    console.log(req);
+    console.log(req.body);
 
-      x=post.post;
+     const x=post.post;
+
     //const newPost= new PostMessage(post.post);
-     const newPost = new PostMessage({...x, creator: req.userId , date: new Date().toISOString})
+     const newPost = new PostMessage({...x, creator: req.userId , date: new Date().toISOString()})
+     console.log('new  ',newPost);
 
     try {
          await newPost.save();
