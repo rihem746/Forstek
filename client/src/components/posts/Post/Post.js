@@ -34,7 +34,10 @@ const Post = ({post ,setCurrentId}) => {
     return ( 
         <Card className={classes.Card}>
           <CardHeader
+<<<<<<< HEAD
 
+=======
+>>>>>>> 881059edd19efab37c3964e3be208435339153a5
             action={
               <Button size="small" color="secondary" onClick={()=>dispatch(deletePost(post._id))}>
                 <DeleteIcon />
@@ -50,12 +53,13 @@ const Post = ({post ,setCurrentId}) => {
             </CardContent>
 
 
-        <CardActions disableSpacing >
+        <CardActions disableSpacing className={classes.cardActions}>
           <Button size="small" color="primary" onClick={()=>dispatch(likePost(post._id))}>
             <IconButton aria-label="add to favorites">
               <FavoriteIcon color="secondary"/>
             </IconButton>
                 {post.likes}
+<<<<<<< HEAD
           </Button>
 
           
@@ -63,6 +67,9 @@ const Post = ({post ,setCurrentId}) => {
               
 
               
+=======
+          </Button>           
+>>>>>>> 881059edd19efab37c3964e3be208435339153a5
           <Button style={{color:'white'}} size="small" onClick={()=>setCurrentId(post._id)}>
             <MoreHorizonIcon fontSize='default'  />
           </Button>  
