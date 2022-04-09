@@ -2,17 +2,21 @@ import mongoose from 'mongoose';
 
 const postSchema = mongoose.Schema({
     job:  String,
-    entreprise : String,
+    name: String,
+    creator: String,
     description:  String,
+    tags:[String],
+    categorie: String,
     type:  String,
     localisation: String, 
+    
     date:{
         type:Date,
         default: new Date()
     },
     likes:{
-        type: Number,
-        default:0
+        type: [String],
+        default:[],
 
     },
 });
