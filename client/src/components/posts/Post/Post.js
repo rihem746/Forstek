@@ -25,7 +25,7 @@ const Post = ({post ,setCurrentId}) => {
         </Button>
           }
           title={post.job}
-          subheader={post.entreprise}
+          subheader={post.name}
         />
            
            
