@@ -1,5 +1,5 @@
 import React from 'react';
-import  {Card , CardHeader, CardContent , Button, Typography, CardActions} from '@material-ui/core';
+import  {Card , CardHeader, CardContent , Button, Typography, CardActions , ButtonBase} from '@material-ui/core';
 import DeleteIcon from '@material-ui/icons/Delete';
 import MoreHorizonIcon from '@material-ui/icons/MoreHoriz';
 import moment from 'moment';
@@ -8,6 +8,7 @@ import FavoriteIcon from "@material-ui/icons/Favorite";
 import usesStyles from './styles';
 import ThumbUpAltIcon  from '@material-ui/icons/ThumbUpAlt';
 import ThumbUpAltOutlined from '@material-ui/icons/ThumbUpAltOutlined';
+import {useHistory} from 'react-router-dom';
 
 import {useDispatch} from 'react-redux';
 import {deletePost , likePost} from '../../../actions/posts';
@@ -16,6 +17,9 @@ import {deletePost , likePost} from '../../../actions/posts';
 const Post = ({post ,setCurrentId}) => {
     const classes=usesStyles();
     const dispatch = useDispatch();
+    const user= JSON.parse(localStorage.getItem('profile'));
+    const history= useHistory();
+
     const Likes = ()=> {
       if(post.likes.length >0) {
         return post.likes.find((like)=>like===(user?.result?.googleId || user?.result?._id))
@@ -29,20 +33,23 @@ const Post = ({post ,setCurrentId}) => {
       }
       return <> <ThumbUpAltOutlined fontSize='small' />&nbsp; Like</>
     };
+    const openPost =()=>{
+        history.push(`/posts/${post._id}`);
+    };
   
 
     return ( 
         <Card className={classes.Card}>
-          <CardHeader
-<<<<<<< HEAD
+        <ButtonBase
+         className={classes.cardActions} onClick={openPost}>
 
-=======
->>>>>>> 881059edd19efab37c3964e3be208435339153a5
-            action={
-              <Button size="small" color="secondary" onClick={()=>dispatch(deletePost(post._id))}>
-                <DeleteIcon />
+       
+          <CardHeader
+            action={(user?.result.googleId ===post?.creator || user?.result?._id === post?.creator ) && (
+              <Button size="small" color="primary" onClick={()=>dispatch(deletePost(post._id))}>
+                <DeleteIcon fontSize='small'></DeleteIcon>
               </Button>
-            }
+            )}
             title={post.job}
             subheader={moment(post.date).fromNow()}
           />
@@ -51,28 +58,19 @@ const Post = ({post ,setCurrentId}) => {
                 <Typography gutterBottom variant="h5" component="h4" className={classes.title}>{post.entreprise}</Typography>
                 <Typography variant="body2" color="textSecondary" component="p" className={classes.details}>{post.description}</Typography>
             </CardContent>
-
+            </ButtonBase>
 
         <CardActions disableSpacing className={classes.cardActions}>
-          <Button size="small" color="primary" onClick={()=>dispatch(likePost(post._id))}>
-            <IconButton aria-label="add to favorites">
-              <FavoriteIcon color="secondary"/>
-            </IconButton>
-                {post.likes}
-<<<<<<< HEAD
+          <Button size="small" color="primary" disabled={!user?.result} onClick={()=>dispatch(likePost(post._id))}>
+            <Likes />
           </Button>
-
+          {(user?.result.googleId ===post?.creator || user?.result?._id === post?.creator ) && (
+             <Button style={{color:'white'}} size="small" onClick={()=>setCurrentId(post._id)}>
+             <MoreHorizonIcon fontSize='default'  />
+           </Button>  
+           )}
+           
           
-          
-              
-
-              
-=======
-          </Button>           
->>>>>>> 881059edd19efab37c3964e3be208435339153a5
-          <Button style={{color:'white'}} size="small" onClick={()=>setCurrentId(post._id)}>
-            <MoreHorizonIcon fontSize='default'  />
-          </Button>  
            
          </CardActions>  
              

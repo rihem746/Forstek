@@ -33,6 +33,23 @@ export const createPost = async (req,res) =>{
     }
 }
 
+export const getPostsBySearch = async (req,res)=> {
+          const {searchQuery, tags}=req.query;
+          
+
+    try {
+         const job=new RegExp(searchQuery,'i');
+         //console.log(job);
+         const posts = await PostMessage.find({ $or: [{searchQuery} , {tags: { $in: tags.split(',') }}]});
+         cons
+         res.json({data: posts});
+         console.log({data: posts});
+
+    } catch (error) {
+         res.status(404).json({message: error.message});
+    }
+}
+
 export const updatePost = async (req,res) => {
     const {id : _id} = req.params;
     const post =req.body;

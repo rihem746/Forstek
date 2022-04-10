@@ -23,7 +23,13 @@ const Form = ({currentId, setCurrentId}) => {
     
   };
   const handleChange=(e) =>{
-    setPostData ({...postData , [e.target.name]: e.target.value});
+    switch(e.target.name){
+      case 'tags':
+        setPostData({ ...postData, tags: e.target.value.split(',')});
+      default:
+        setPostData ({...postData , [e.target.name]: e.target.value});
+    }
+
 };
   
   useEffect (()=>{
@@ -51,8 +57,8 @@ const Form = ({currentId, setCurrentId}) => {
          <Typography variant="h6">{currentId? 'Modification' : 'Création'} annonce </Typography>
          <Input name="job" label="Métier"handleChange ={handleChange} type="text"/>
          <Input name="description" label="Description"handleChange ={handleChange} />
-         <Input name="tags" label="Hachtags"handleChange ={handleChange} />
-         <Input name="categorie" label="Catégorie"handleChange ={handleChange} />
+         <Input name="tags" label="Hachtags (coma separated)"handleChange ={handleChange} />
+        <Input name="categorie" label="Catégorie"handleChange ={handleChange} />
          <Input name="type" label="Type"handleChange ={handleChange} />
          <Input name="localisation" label="Localisation"handleChange ={handleChange} />
         
