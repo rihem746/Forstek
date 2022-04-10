@@ -12,6 +12,9 @@ export default (posts = [], action) => {
       return action.payload;
       case FETCH_BY_SEARCH:
         return action.payload;
+      case 'FETCH_POST':
+          return { post: action.payload};
+            
           
     case CREATE:
       return [... posts, action.payload];

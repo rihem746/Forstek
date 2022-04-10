@@ -11,6 +11,7 @@ import Inscription from './components/Auth/Inscription';
 import Profile from './components/Auth/donneePersonelle/Profile';
 import Cv from './components/Auth/cv/Cv';
 import Footer from './components/footer/Footer';
+import PostDetails from './components/PostDetails/PostDetails';
 
 const  App =() => {
 
@@ -23,11 +24,13 @@ const  App =() => {
          <Navbar />
          <Switch>
            <Route path="/" exact component={Home} />
+
            <Route path="/auth" exact component={Auth} />
            <Route path="/inscription" exact component={Inscription} />
 
            <Route path="/profiledata" exact component={Profile} />
            <Route path="/cv" exact component={Cv} />
+           <Route path="/posts/:id"component={PostDetails} />
 
          </Switch>
          <Footer />
