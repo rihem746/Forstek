@@ -134,13 +134,15 @@ const Navbar = () => {
            </Box>
  
            <Box sx={{ flexGrow: 0 }}>
-             <Tooltip title="Open settings">
+             
         {user ? (
+          <Tooltip title="Open settings">
           <IconButton sx={{ p: 0 }}>
           <Toolbar className={classes.toolbar}>
             <Avatar onClick={handleOpenUserMenu} className={classes.purple} alt={user.result.name} src={user.result.imageUrl}>{user.result.name.charAt(0)}</Avatar>
           </Toolbar>
           </IconButton>
+          </Tooltip>
 
         ):(
           <div>
@@ -148,7 +150,7 @@ const Navbar = () => {
           </div>
         )}
 
-             </Tooltip>
+             
              <Menu
                sx={{ mt: '45px' }}
                id="menu-appbar"
