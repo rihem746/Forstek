@@ -14,6 +14,7 @@ export const getPosts = async (req,res) => {
 export const getPost = async (req,res) => {
    const {id}= req.params;
     try {
+        console.log("iiiii",req.params);
         const post= await  PostMessage.findById(id);
 
         res.status(200).json(post);
@@ -49,9 +50,7 @@ export const getPostsBySearch = async (req,res)=> {
 
     try {
          const job=new RegExp(searchQuery,'i');
-         //console.log(job);
-         const posts = await PostMessage.find({ $or: [{searchQuery} , {tags: { $in: tags.split(',') }}]});
-         
+         const posts = await PostMessage.find({ $or: [{job} , {tags: { $in: tags.split(',') }}]});
          res.json({data: posts});
          console.log({data: posts});
 

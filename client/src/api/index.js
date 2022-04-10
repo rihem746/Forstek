@@ -11,7 +11,7 @@ API.interceptors.request.use((req) =>{
 });
 
 export const fetchPosts = () => API.get('/posts');
-export const fetchPost = (id) => API.get(`/posts/${id}`);
+export const fetchPost = (id) => API.get(`/posts/post${id}`);
 
 export const fetchPostsBySearch =(searchQuery) => API.get(`/posts/search?searchQuery=${searchQuery.search || 'none'} &tags=${searchQuery.tags}`);
 export const createPost = (newPost)=> API.post('/posts' , newPost);

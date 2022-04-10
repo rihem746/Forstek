@@ -8,7 +8,7 @@ const router =express.Router();
 const jsonParser = bodyParser.json();
 
 router.get('/',getPosts);
-router.get('/:id',getPost);
+router.get('/post:id',getPost);
 
 router.get('/search',getPostsBySearch);
 router.post('/',jsonParser,auth,createPost);
