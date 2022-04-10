@@ -6,6 +6,8 @@ import moment from 'moment';
 import IconButton from "@material-ui/core/IconButton";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import usesStyles from './styles';
+import ThumbUpAltIcon  from '@material-ui/icons/ThumbUpAlt';
+import ThumbUpAltOutlined from '@material-ui/icons/ThumbUpAltOutlined';
 
 import {useDispatch} from 'react-redux';
 import {deletePost , likePost} from '../../../actions/posts';
@@ -14,9 +16,28 @@ import {deletePost , likePost} from '../../../actions/posts';
 const Post = ({post ,setCurrentId}) => {
     const classes=usesStyles();
     const dispatch = useDispatch();
+    const Likes = ()=> {
+      if(post.likes.length >0) {
+        return post.likes.find((like)=>like===(user?.result?.googleId || user?.result?._id))
+         ? (
+           <><ThumbUpAltIcon fontSize='small' />&nbsp;{post.likes.length >2 `Vous et ${post.likes.length -1} autres` } `${post.likes.length} like${post.likes.length >1 ? 's' : ''} ` 
+           </>
+         ):(
+           <><ThumbUpAltOutlined  fontSize='small'/>&nbsp;{post.likes.length} {post.likes.length ===1 ? 'Like' : 'Likes' }
+           </>
+         )
+      }
+      return <> <ThumbUpAltOutlined fontSize='small' />&nbsp; Like</>
+    };
+  
+
     return ( 
         <Card className={classes.Card}>
           <CardHeader
+<<<<<<< HEAD
+
+=======
+>>>>>>> 881059edd19efab37c3964e3be208435339153a5
             action={
               <Button size="small" color="secondary" onClick={()=>dispatch(deletePost(post._id))}>
                 <DeleteIcon />
@@ -38,7 +59,17 @@ const Post = ({post ,setCurrentId}) => {
               <FavoriteIcon color="secondary"/>
             </IconButton>
                 {post.likes}
+<<<<<<< HEAD
+          </Button>
+
+          
+          
+              
+
+              
+=======
           </Button>           
+>>>>>>> 881059edd19efab37c3964e3be208435339153a5
           <Button style={{color:'white'}} size="small" onClick={()=>setCurrentId(post._id)}>
             <MoreHorizonIcon fontSize='default'  />
           </Button>  
