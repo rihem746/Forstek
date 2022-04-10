@@ -8,9 +8,7 @@ const Experience = ({formData, setFormData}) => {
     
     const classes=useStyles();
 
-    const [experienceData, setExperienceData ] = useState({
-        jobTitle:'' ,entrepriseName:'' ,location:'', dateDebut:'', dateFin:'' ,description:'',
-    });
+    const [experienceData, setExperienceData ] = useState(formData.experience);
    
     const handleChange=(e) =>{
           setExperienceData ({...experienceData ,[e.target.name]: e.target.value});

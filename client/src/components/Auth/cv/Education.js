@@ -8,9 +8,7 @@ import Input from '../Input';
 
 const Education = ({formData, setFormData}) => {
     
-    const [educationData, setEducationData] = useState({
-        diplome:'' ,specialite:'' ,universite:'' ,ville:'', dateDebut:'', dateFin:'',
-    });
+    const [educationData, setEducationData] = useState(formData.education);
     const classes=useStyles();
    
     const handleChange=(e) =>{

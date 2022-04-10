@@ -17,10 +17,10 @@ const Home = () => {
 
     return ( 
         <Grow in>
-        <Container container justify="space-between" alignItems="stretch" spacing={3}>
+        <Container container justify="space-between" alignItems="stretch" spacing={3} maxWidth="1500px">
         <Stack spacing={2}>
           <Search/>
-          <Grid item xs={12} sm ={7}>
+          <Grid item xs={12}  sm ={7}>
              <Posts setCurrentId={setCurrentId} />
           </Grid>
           <Grid item xs={12} sm ={4}>

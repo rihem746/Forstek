@@ -9,14 +9,14 @@ import FormLabel from '@mui/material/FormLabel';
 
 import useStyles from '../styles';
 import Input from '../Input';
+import { Grid, Typography } from '@material-ui/core';
 
 
 const Info = ({formData, setFormData}) => {
     const classes=useStyles();
+    console.log('info  :::  ',formData);
    
-    const [infoData, setInfoData] = useState({
-        firstName:'' , lastName:'' ,poste:'' ,phone:'' ,adresse:'' ,email:'', dateNaissance:'', genre:'femme',
-    });
+    const [infoData, setInfoData] = useState(formData.info);
 //console.log(formData.info.genre);
     const handleChange=(e) =>{
           setInfoData ({...infoData ,[e.target.name]: e.target.value});
@@ -35,19 +35,14 @@ const Info = ({formData, setFormData}) => {
             <Input name="phone" label="Téléphone" handleChange ={handleChange} value={infoData.phone}/>
             <Input name="adresse" label="Adresse" handleChange ={handleChange} value={infoData.adresse}/>
 
-            <FormLabel id="Date de naissance" >Date de naissance</FormLabel>
+            <FormLabel id="Date de naissance" >Date de naissance *</FormLabel>
             <Input name="dateNaissance" handleChange ={handleChange} type="date" value={infoData.dateNaissance} />
+            <Grid container spacing={2}>
 
-            <FormLabel id="genre" >Genre</FormLabel>
-            <RadioGroup
-                aria-labelledby="demo-controlled-radio-buttons-group"
-                name="genre"
-                value={infoData.genre}
-                onChange={handleChange}
-                >
-                <FormControlLabel value="femme" control={<Radio />} label="Femme" />
-                <FormControlLabel value="homme" control={<Radio />} label="Home" />
-            </RadioGroup>
+
+                <Input label='Femme' type="radio" name="genre" half value="femme" checked={true} onChange={handleChange} />
+                <Input type="radio" label='Homme' half name="genre" value="homme" onChange={handleChange} />
+            </Grid>
                      
     </>
 

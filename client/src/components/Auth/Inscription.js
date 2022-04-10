@@ -38,12 +38,21 @@ const Inscription = () => {
     };
 
     return ( 
-        <Container component="main" maxWidth="xs">
+        <Container component="main" maxWidth="gl">
             <Paper className={classes.paper} elevation={3}>
                 <Avatar className={classes.avatar}>
                     <LockOutlinedIcon/>
                </Avatar>
-               <Typography variant= "h5">{isEntreprise ? 'pour entreprise' : "pour chercheur d'emploi"}</Typography>
+               <Typography variant= "h5">{isEntreprise ? 'Pour entreprise' : "Pour chercheur d'emploi"}</Typography>
+
+               <Grid container justify="center">
+                         <Grid item>
+                             <Button onClick={switchMode}>
+                                {isEntreprise ? "pour les chercheurs d'opportunité" : "pour les chercheurs du ressources"} 
+                             </Button>
+                         </Grid>
+                </Grid>
+
                <form className={classes.form} onSubmit={handleSubmit}>
                    <Grid container spacing={2}>
                       
@@ -59,19 +68,19 @@ const Inscription = () => {
                        <Input name="password" label="Mot de passe"handleChange ={handleChange} type={showPassword ? "text" : "password"} handleShowPassword={handleShowPassword} />
                        <Input name="confirmPassword" label="Mot de passe"handleChange ={handleChange} type ="password" />
                     </Grid>
-                    <Button type='submit' fullwidth variant="contained" color="primary" className={classes.submit}>S'inscrire
-                    </Button>
-                    <Grid container justify="flex-end">
-                         <Grid item>
-                             <Button onClick={switchMode}>
-                                {isEntreprise ? "pour les chercheurs d'opportunité" : "pour les chercheurs du ressources"} 
-                             </Button>
-                         </Grid>
+                    <Grid container justify="center">
+                    <Button type='submit' fullwidth variant="contained" color="primary" className={classes.submit}>S'inscrire</Button>
                     </Grid>
 
-
-
                </form>
+               
+               <Grid container justify="center">
+                         <Grid item>
+                             <Button>
+                                 Vous avez un compte ? <Link to="/auth"> Se Connecter </Link>
+                             </Button>
+                         </Grid>
+                </Grid>
             </Paper>
         </Container>
      );

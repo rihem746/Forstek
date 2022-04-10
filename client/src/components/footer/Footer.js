@@ -10,7 +10,7 @@ const Footer = () => {
         </Typography>
         <Typography variant="subtitle1" align="center" color="textSecondary" component="p">
         </Typography>
-        <Typography variant="body2" color="textSecondary" align="center">
+        <Typography variant="body2"  align="center">
             Copyright © Forstek 2022
         </Typography>
   </footer>

@@ -13,7 +13,7 @@ export default makeStyles({
   fullHeightCard: {
     height: '100%',
   },
-  card: {
+  Card: {
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'space-between',
@@ -21,6 +21,7 @@ export default makeStyles({
     height: '100%',
     position: 'relative',
     maxWidth: 345,
+    backgroundColor: '#d3d3d3',
   },
   overlay: {
     position: 'absolute',

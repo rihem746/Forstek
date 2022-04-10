@@ -18,7 +18,7 @@ const  App =() => {
 
   return (
      <BrowserRouter>
-        <Container maxwidth="lg">
+        <Container maxWidth="1500px">
         <Stack spacing={2}>
          <Navbar />
          <Switch>

@@ -55,20 +55,20 @@ const Auth = () => {
 
 
     return ( 
-        <Container component="main" maxWidth="xs">
+        <Container component="main" maxWidth="gl">
             <Paper className={classes.paper} elevation={3}>
                 <Avatar className={classes.avatar}>
                     <LockOutlinedIcon/>
                </Avatar>
-               <Typography variant= "h5">se Connecter</Typography>
+               <Typography variant= "h5">Se Connecter</Typography>
                <form className={classes.form} onSubmit={handleSubmit}>
                    <Grid container spacing={2}>
                        <Input name="email" label="Adresse e-mail"handleChange ={handleChange} type="email"/>
                        <Input name="password" label="Mot de passe"handleChange ={handleChange} type={showPassword ? "text" : "password"} handleShowPassword={handleShowPassword} />
                     </Grid>
-                    
-                    <Button type='submit' fullwidth  color="primary" className={classes.submit} variant='contained'>Se Connecter
-                    </Button>
+                    <Grid container justify="center">
+                    <Button type='submit' fullwidth color="primary" className={classes.submit} variant='contained'>Se Connecter</Button>
+                    </Grid>
                     <GoogleLogin    
                        clientId='1072472849226-esh8sbqfgbja49bq2ehr2nkdduu1ntbi.apps.googleusercontent.com'
                        render={(renderProps)=>(
@@ -81,7 +81,7 @@ const Auth = () => {
                      cookiePolicy="single_host_origin"
                         
                     />
-                    <Grid container justify="flex-end">
+                    <Grid container justify="center">
                          <Grid item>
                              <Button>
                                  vous n'avez pas du compte ? <Link to="/inscription"> s'inscrire </Link>

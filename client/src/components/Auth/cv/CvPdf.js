@@ -28,14 +28,16 @@ const CvPdf = () => {
     
 
     return ( 
-        <>
+        < >
         <Typography variant= "h5">Charger un cv existant</Typography>
+        <Typography variant= "h5">
         <form className={classes.form} onSubmit={handleSubmit}>
             <input type="file" name="cvData" accept="application/pdf" onChange={handleChange} required />
             <Button type='submit' fullwidth variant="contained" color="primary" className={classes.submit} >
                 Upload
             </Button>
         </form>
+        </Typography>
         </>
 
      );

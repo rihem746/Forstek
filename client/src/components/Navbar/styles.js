@@ -10,6 +10,7 @@ export default makeStyles((theme) => ({
     justifyContent: 'space-between',
     alignItems: 'center',
     padding: '10px 50px',
+    backgroundColor:'#444',
   },
   heading: {
     color: 'rgba(0,183,255, 1)',
@@ -48,7 +49,8 @@ export default makeStyles((theme) => ({
     color: theme.palette.getContrastText(deepPurple[500]),
     backgroundColor: deepPurple[500],
     margin : 'auto',
-  },logout:{
+  },
+  logout:{
     width:'100%',
     padding:'0 10px',
 

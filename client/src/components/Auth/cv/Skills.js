@@ -5,9 +5,7 @@ import Input from '../Input';
 
 const Skills = ({formData, setFormData}) => {
     
-    const [skillData, setSkillData] = useState({
-        skill:'' ,
-    });
+    const [skillData, setSkillData] = useState(formData.skills);
     const classes=useStyles();
    
     const handleChange=(e) =>{
