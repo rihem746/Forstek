@@ -4,16 +4,19 @@ import useStyles from './styles';
 import {Link , useHistory ,useLocation} from 'react-router-dom';
 import {useDispatch} from 'react-redux';
 
-import { AppBar, Toolbar,Avatar, Typography} from '@material-ui/core';
+import { AppBar, Toolbar,Avatar, Typography, Button} from '@material-ui/core';
 import logo from '../../images/logo.svg';
 
 
 import Box from '@mui/material/Box';
-import IconButton from '@mui/material/IconButton';
 import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
-import Button from '@mui/material/Button';
+
+import IconButton from '@mui/material/IconButton';
+
+import Stack from '@mui/material/Stack';
+
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 
@@ -120,17 +123,19 @@ const Navbar = () => {
            >
            </Typography>
            <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+           {user ? (
+           <Stack direction="row" spacing={3}>
+           
              {pages.map((page) => (
                <Link to={"/"+page}>
-               <Button
-                 key={page}
-                 onClick={handleCloseNavMenu}
-                 sx={{ my: 2, color: 'white', display: 'block' }}
-               >
+                 <IconButton  color='warning' >
                  {page}
-               </Button>
+                 </IconButton>
                </Link>
              ))}
+
+            </Stack>
+          ):(<></>)}
            </Box>
  
            <Box sx={{ flexGrow: 0 }}>

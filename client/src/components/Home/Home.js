@@ -20,12 +20,11 @@ const Home = () => {
         <Container container justify="space-between" alignItems="stretch" spacing={3} maxWidth="1500px">
         <Stack spacing={2}>
           <Search/>
-          <Grid item xs={12}  sm ={7}>
-             <Posts setCurrentId={setCurrentId} />
-          </Grid>
-          <Grid item xs={12} sm ={4}>
-             <Form  currentId={currentId} setCurrentId={setCurrentId} />
-          </Grid>
+
+          <Posts setCurrentId={setCurrentId} />
+
+          <Form  currentId={currentId} setCurrentId={setCurrentId} />
+
           </Stack>
         </Container>
 
