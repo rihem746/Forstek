@@ -1,5 +1,5 @@
 import React , {useEffect}from 'react';
-import {Paper , Typography , CircularProgress, Divider} from '@material-ui/core';
+import {Paper , Typography , Divider} from '@material-ui/core';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import FmdGoodIcon from '@mui/icons-material/FmdGood';
 import {useDispatch , useSelector} from 'react-redux';
@@ -19,14 +19,13 @@ const PostDetails = () => {
         dispatch(getPost(id));
     },[id]);
 
-    useEffect(()=>{
-      if(post) {
-        dispatch(getPostsBySearch({search: 'none', tags: post?.tags.join(',')}));
-      }
-    }, [post])
+   
     if (!post) return null;
     
-    const recommendedPosts = posts.filter(({_id})=>_id !==post._id);
+
+   // const recommendedPosts= posts.filter(({_id})=>{_id !==post._id});
+    
+     
     const openPost=(_id) =>{
        history.push(`/posts/${_id}`);
     }
@@ -46,26 +45,9 @@ const PostDetails = () => {
           <Typography variant="body1"><strong><FmdGoodIcon/> {post.localisation}</strong></Typography>
           <Divider style={{ margin: '20px 0' }} />
         </div>
-        
       </div>
-      {recommendedPosts.length &&(
-      <div className={classes.section} >
-        <Typography gutterBottom variant="h5"  >Si vous pouvez ceci peut vous aider :</Typography>
-        <Divider />
-        <div className={classes.recommendedPosts}>
-          {recommendedPosts.map(({job,description,likes,localisation ,_id})=>(
-            <div style={{margin:'20px', cursor:"pointer"}} onClick={()=>openPost(_id)} key={_id}>
-               <Typography gutterBottom variant='h6'>{job}</Typography>
-               <Typography gutterBottom variant='subtitled2'>{description}</Typography>
-               <Typography gutterBottom variant='subtitled2'>
-                 <FmdGoodIcon/>{localisation}</Typography>
-               <Typography gutterBottom variant='subtitle1'>{likes.length} <FavoriteIcon /></Typography>
-
-            </div>
-          ))}
-        </div>
-      </div>
-     )}
+      
+     
      </Paper>
      
      );
