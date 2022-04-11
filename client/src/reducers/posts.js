@@ -11,7 +11,7 @@ export default (posts = [], action) => {
     case FETCH_ALL:
       return action.payload;
       case FETCH_BY_SEARCH:
-        return action.payload;
+        return  {posts: action.payload};
       case 'FETCH_POST':
           return { post: action.payload};
             
