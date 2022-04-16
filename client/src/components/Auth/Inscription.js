@@ -8,7 +8,7 @@ import useStyles from './styles';
 import Input from './Input';
 import { useDispatch } from 'react-redux';
 
-const initialState={firstName:'' , lastName:'', entrepriseName:'', location:'', password:'' ,confirmPassword :''};
+const initialState={firstName:'' , lastName:'', entrepriseName:'',email:'', location:'', password:'' ,confirmPassword :''};
 
 const Inscription = () => {
     
@@ -56,17 +56,17 @@ const Inscription = () => {
                <form className={classes.form} onSubmit={handleSubmit}>
                    <Grid container spacing={2}>
                       
-                       <Input name="firstName" label="Nom"handleChange ={handleChange} half/>
-                       <Input name="lastName" label="Prénom"handleChange ={handleChange} half />
+                       <Input name="firstName" label="Nom" value={formData.firstName} handleChange ={handleChange} half/>
+                       <Input name="lastName" label="Prénom" value={formData.lastName} handleChange ={handleChange} half />
                        { isEntreprise && (
                             <>
-                               <Input name="entrepriseName" label="Nom entreprise"handleChange ={handleChange} half/>
+                               <Input name="entrepriseName" label="Nom entreprise" value={formData.entrepriseName} handleChange ={handleChange} half/>
                                <Input name="location" label="Localisation"handleChange ={handleChange} half/>
                             </>
                        )}
-                       <Input name="email" label="Adresse e-mail"handleChange ={handleChange} type="email"/>
-                       <Input name="password" label="Mot de passe"handleChange ={handleChange} type={showPassword ? "text" : "password"} handleShowPassword={handleShowPassword} />
-                       <Input name="confirmPassword" label="Mot de passe"handleChange ={handleChange} type ="password" />
+                       <Input name="email" label="Adresse e-mail" value={formData.email} handleChange ={handleChange} type="email"/>
+                       <Input name="password" label="Mot de passe" value={formData.password}handleChange ={handleChange} type={showPassword ? "text" : "password"} handleShowPassword={handleShowPassword} />
+                       <Input name="confirmPassword" label="Mot de passe" value={formData.confirmPassword}handleChange ={handleChange} type ="password" />
                     </Grid>
                     <Grid container justify="center">
                     <Button type='submit' fullwidth variant="contained" color="primary" className={classes.submit}>S'inscrire</Button>

@@ -10,7 +10,8 @@ export default makeStyles((theme) => ({
     justifyContent: 'space-between',
     alignItems: 'center',
     padding: '10px 50px',
-    backgroundColor:'#444',
+    backgroundColor:'rgb(31, 27, 45)',
+    
   },
   heading: {
     color: 'rgba(0,183,255, 1)',

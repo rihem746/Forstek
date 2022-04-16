@@ -1,6 +1,5 @@
 import React from 'react';
 import {Container} from '@material-ui/core';
-import Stack from '@mui/material/Stack';
 
 import Home from './components/Home/Home';
 import Auth from './components/Auth/Auth';
@@ -17,20 +16,21 @@ import Video from './chat/Video';
 
 const  App =() => {
 
-  
+  const user=JSON.parse(localStorage.getItem('profile'));
 
   return (
      <BrowserRouter>
-        <Container maxWidth="1500px">
-        <Stack spacing={2}>
+        <Container maxWidth="xl">
+        
          <Navbar />
          <Switch>
-           <Route path="/" exact component={()=><Redirect to='/posts' />}/>
+           <Route path="/" exact component={()=><Redirect to="/posts" />}/>
            <Route path="/posts" exact component={Home}/>
            <Route path="/posts/search" exact component={Home}/>
+  
+           <Route path="/auth" exact component={()=>(!user? <Auth/> : <Redirect to="/posts" />)} />
+           <Route path="/inscription" exact component={()=>(!user? <Inscription /> : <Redirect to="/posts" />)} />
 
-           <Route path="/auth" exact component={Auth} />
-           <Route path="/inscription" exact component={Inscription} />
 
            <Route path="/profiledata" exact component={Profile} />
            <Route path="/cv" exact component={Cv} />
@@ -40,7 +40,6 @@ const  App =() => {
 
          </Switch>
          <Footer />
-         </Stack>
         </Container>
       </BrowserRouter>
   );
