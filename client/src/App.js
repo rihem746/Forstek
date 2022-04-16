@@ -13,6 +13,8 @@ import Cv from './components/Auth/cv/Cv';
 import Footer from './components/footer/Footer';
 import PostDetails from './components/PostDetails/PostDetails';
 
+import Video from './chat/Video';
+
 const  App =() => {
 
   
@@ -27,15 +29,14 @@ const  App =() => {
            <Route path="/posts" exact component={Home}/>
            <Route path="/posts/search" exact component={Home}/>
 
-
-
-
            <Route path="/auth" exact component={Auth} />
            <Route path="/inscription" exact component={Inscription} />
 
            <Route path="/profiledata" exact component={Profile} />
            <Route path="/cv" exact component={Cv} />
            <Route path="/posts/:id"component={PostDetails} />
+
+           <Route path="/video"component={Video} />
 
          </Switch>
          <Footer />
