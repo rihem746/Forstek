@@ -34,6 +34,7 @@ const Auth = () => {
         dispatch(signin(formData,history));
     };
     const handleChange=(e) =>{
+        console.log("fff  ",e.target.value);
         setFormData ({...formData , [e.target.name]: e.target.value});
     };
 
@@ -63,8 +64,8 @@ const Auth = () => {
                <Typography variant= "h5">Se Connecter</Typography>
                <form className={classes.form} onSubmit={handleSubmit}>
                    <Grid container spacing={2}>
-                       <Input name="email" label="Adresse e-mail"handleChange ={handleChange} type="email"/>
-                       <Input name="password" label="Mot de passe"handleChange ={handleChange} type={showPassword ? "text" : "password"} handleShowPassword={handleShowPassword} />
+                       <Input name="email" label="Adresse e-mail" value={formData.email} handleChange ={handleChange} type="email"/>
+                       <Input name="password" label="Mot de passe" value={formData.password} handleChange ={handleChange} type={showPassword ? "text" : "password"} handleShowPassword={handleShowPassword} />
                     </Grid>
                     <Grid container justify="center">
                     <Button type='submit' fullwidth color="primary" className={classes.submit} variant='contained'>Se Connecter</Button>

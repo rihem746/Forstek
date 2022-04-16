@@ -1,5 +1,5 @@
 import React, { useState , useEffect} from 'react';
-import { TextField, Button, Typography, Paper } from '@material-ui/core';
+import { Button, Typography, Paper } from '@material-ui/core';
 import {useDispatch ,useSelector} from 'react-redux';
 import {createPost} from '../../actions/posts';
 import useStyles from './styles';
@@ -13,12 +13,27 @@ const Form = ({currentId, setCurrentId}) => {
   const classes= useStyles();
   const [postData, setPostData] = useState(initialState);
   const dispatch = useDispatch();
-  const post=useSelector((state)=> currentId ?  state.posts.find((p)=>p._id ===currentId):null);
+  const post=useSelector((state)=> currentId ?  state.posts.posts.find((p)=>p._id ===currentId):null);
   const user= JSON.parse(localStorage.getItem('profile'));
 
-  const handleSubmit = (e) => {
+  useEffect (()=>{
+    if (post) setPostData(post);
+
+   },[post]);
+  const clear = () => {
+    setCurrentId(0);
+    setPostData({ job: '', description: '',tags: '',categorie:'', type: '', localisation:'' });
+};
+
+
+  const handleSubmit =async (e) => {
     e.preventDefault();
-    dispatch(createPost({...postData, name: user?.result?.name}));
+    if(currentId){
+      dispatch(updatePost(currentId,{...postData, name:user?.result?.name}));
+    } else{
+      dispatch(createPost({...postData, name:user?.result?.name}));
+    }
+   
     clear();
     
   };
@@ -32,15 +47,8 @@ const Form = ({currentId, setCurrentId}) => {
 
 };
   
-  useEffect (()=>{
-    if (post) setPostData(post);
-
-   },[post])
-
-  const clear = () => {
-      setCurrentId(null);
-      setPostData({ job: '', description: '', type: '', localisation:''});
-  };
+  
+ 
 
   if (!user?.result?.name) {
     return (
