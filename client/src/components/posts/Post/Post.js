@@ -19,6 +19,7 @@ const Post = ({post ,setCurrentId}) => {
     const history= useHistory();
 
   const Likes = ()=> {
+    console.log('like >>>> ', post);
       if(post.likes.length >0) {
         return post.likes.find((like)=> like ===(user?.result?.googleId || user?.result?._id))
          ? (

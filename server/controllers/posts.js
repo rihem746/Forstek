@@ -99,7 +99,9 @@ export const likePost = async (req,res) => {
        post.likes = post.likes.filter((id)=> id !==String(req.userId));
    }
 
-   const updatedPost= await PostMessage.findByIdAndUpdate(id, {likes: post.likes +1}, {new: true});
+   console.log("likes  ",post.likes);
+
+   const updatedPost= await PostMessage.findByIdAndUpdate(id, {likes: post.likes}, {new: true});
 
    res.json(updatedPost);
 }

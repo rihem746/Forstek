@@ -1,7 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
 import { useHistory, useLocation } from "react-router-dom";
 
-import Button from "@material-ui/core/Button";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 
 import io from "socket.io-client";
@@ -173,15 +172,19 @@ const Video = () => {
       const disconnectCall = () => {
         
         toggleVideo(false);
-
         setCalling(false);
         setCallEnded(true);
-		connectionRef.current.destroy();
 
-        history.push("/");
-        window.location.reload();
+        setTimeout(()=>{
+          connectionRef.current.destroy();
+          history.push("/");
+          window.location.reload();
+        }, 1);
+
 
       };
+
+
 
   return (
     <>
