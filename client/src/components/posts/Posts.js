@@ -2,7 +2,6 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import {Grid, CircularProgress, Card} from '@material-ui/core';
 
-import Pagination from '@mui/material/Pagination';
 
 
 import Post from './Post/Post';
@@ -26,8 +25,6 @@ const Posts = ({ setCurrentId}) => {
              </Grid>
            ))}
         </Grid>
-
-       
 </Grid>
 
 

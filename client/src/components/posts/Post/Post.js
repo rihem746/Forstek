@@ -19,7 +19,6 @@ const Post = ({post ,setCurrentId}) => {
     const history= useHistory();
 
   const Likes = ()=> {
-    console.log('like >>>> ', post);
       if(post.likes.length >0) {
         return post.likes.find((like)=> like ===(user?.result?.googleId || user?.result?._id))
          ? (
@@ -39,7 +38,7 @@ const Post = ({post ,setCurrentId}) => {
     return ( 
         <Card className={classes.Card} raised elevation={6}>
         <ButtonBase
-         className={classes.cardActions} onClick={openPost}>
+         className={classes.cardActions}>
 
        
           <CardHeader
@@ -52,12 +51,12 @@ const Post = ({post ,setCurrentId}) => {
             subheader={moment(post.date).fromNow()}
           />
 
-             <CardContent>
+             <CardContent onClick={openPost}>
                 <Typography gutterBottom variant="h5" component="h4" className={classes.title}>{post.entreprise}</Typography>
                 <Typography variant='body2' color='textSecondary'>{post.tags.map((tag)=>`#${tag}`)}</Typography>
                 <Typography variant="body2" color="textSecondary" component="p" className={classes.details}>{post.description}</Typography>
             </CardContent>
-            </ButtonBase>
+          </ButtonBase>
 
         <CardActions disableSpacing className={classes.cardActions}>
           <Button size="small" color="primary" disabled={!user?.result} onClick={()=>dispatch(likePost(post._id))}>
