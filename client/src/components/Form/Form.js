@@ -4,7 +4,6 @@ import {useDispatch ,useSelector} from 'react-redux';
 import {createPost} from '../../actions/posts';
 import useStyles from './styles';
 import Input from './Input';
-//import { updatePost } from '../../api';
 import { updatePost } from  '../../actions/posts';
 
     

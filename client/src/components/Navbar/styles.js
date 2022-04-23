@@ -2,6 +2,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { deepPurple } from '@material-ui/core/colors';
 
 export default makeStyles((theme) => ({
+
   appBar: {
     borderRadius: 15,
     margin: '30px 0',
@@ -41,6 +42,7 @@ export default makeStyles((theme) => ({
     fontWeight: '400',
     margin : 'auto',
     textAlign: 'center',
+    color:'rgb(251, 223, 223)',
   },
   brandContainer: {
     display: 'flex',
@@ -66,4 +68,7 @@ export default makeStyles((theme) => ({
     color:'#fff'
 
   }
+
+  
+  
 }));

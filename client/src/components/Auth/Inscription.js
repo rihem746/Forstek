@@ -8,7 +8,7 @@ import useStyles from './styles';
 import Input from './Input';
 import { useDispatch } from 'react-redux';
 
-const initialState={firstName:'' , lastName:'', entrepriseName:'',email:'', location:'', password:'' ,confirmPassword :''};
+const initialState={firstName:'' , lastName:'', entrepriseName:'',email:'', location:'', password:'' ,confirmPassword :'' ,cv:''};
 
 const Inscription = () => {
     
@@ -30,6 +30,7 @@ const Inscription = () => {
     };
     const handleChange=(e) =>{
           setFormData ({...formData , [e.target.name]: e.target.value});
+          console.log(formData);
     };
     
     const switchMode =() =>{

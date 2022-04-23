@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import './Cv.css';
 import { Button , Paper, Grid,Typography,Container} from '@material-ui/core';
+import { saveAs} from 'file-saver';
 
 import Box from '@mui/material/Box';
 import Stepper from '@mui/material/Stepper';
@@ -39,7 +40,6 @@ const Cv=()=> {
       const handleSubmit=(e) =>{
         e.preventDefault();
             
-        console.log('data final >>>> ',formData);
 
         //dispatch(signup(formData,history));
     };
@@ -116,4 +116,4 @@ const Cv=()=> {
   );
 }
 
-export default Cv
+export default Cv;

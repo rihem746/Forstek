@@ -20,7 +20,7 @@ import Stack from '@mui/material/Stack';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 
-const pages = ['Job', 'CV'];
+const pages = ['Annonces Sauvegardées','cv'];
 
 const Navbar = () => {
    
@@ -109,7 +109,7 @@ const Navbar = () => {
                {pages.map((page) => (
                  <Link to={"/"+page}>
                  <MenuItem key={page} onClick={handleCloseNavMenu}>
-                   <Typography textAlign="center" variant='subtitle1'>{page}</Typography>
+                   <Typography textAlign="center">{page}</Typography>
                  </MenuItem>
                  </Link>
                ))}
@@ -141,7 +141,7 @@ const Navbar = () => {
            <Box sx={{ flexGrow: 0 }}>
              
         {user ? (
-          <Tooltip title="Open settings">
+          <Tooltip title="Voir les paramétres">
           <IconButton sx={{ p: 0 }}>
           <Toolbar className={classes.toolbar}>
             <Avatar onClick={handleOpenUserMenu} className={classes.purple} alt={user.result.name} src={user.result.imageUrl}>{user.result.name.charAt(0)}</Avatar>
@@ -151,7 +151,7 @@ const Navbar = () => {
 
         ):(
           <div>
-            <Button component={Link} to="auth" variant='contained' color="secondary">Se connecter</Button>
+            <Button component={Link} to="auth" variant='contained' color="secondary">Se Connecter</Button>
           </div>
         )}
 
@@ -172,20 +172,16 @@ const Navbar = () => {
                open={Boolean(anchorElUser)}
                onClose={handleCloseUserMenu}
              >
-                 <MenuItem key='Profile' onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">Profile</Typography>              
-                 </MenuItem>
+                
 
                  <MenuItem key='Notification' onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">Notification</Typography>              
+                  <Typography textAlign="center">Notifications</Typography>              
                  </MenuItem>
 
-                 <MenuItem key='Saved jobs' onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">Saved jobs</Typography>              
-                 </MenuItem>
+                 
 
                  <MenuItem key='Logout' onClick={handleCloseUserMenu}>
-                  <Typography onClick={logout} textAlign="center">Logout</Typography>
+                  <Typography onClick={logout} textAlign="center">Se Deconnecter</Typography>
                  </MenuItem>
 
              </Menu>

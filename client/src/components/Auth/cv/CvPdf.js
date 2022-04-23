@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Button, Typography} from '@material-ui/core';
+import axios from 'axios';
 
 
 import useStyles from '../styles';
@@ -20,11 +21,11 @@ const CvPdf = () => {
         const formData = new FormData();
         formData.append("cv",cvData);
         console.log("cv::",cvData);
+        axios.post('//localhost:5000/upload', formData)
+          .then((e)=>{console.log("success")})
+            .catch((e)=>{console.log('Error')})
 
-        //console.log('data >>>> ',formData);
-
-        //dispatch(signup(formData,history));
-    };
+    }
     
 
     return ( 

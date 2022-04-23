@@ -5,6 +5,7 @@ import cors from 'cors';
 
 import postRoutes from './routes/posts.js';
 import userRoutes from './routes/users.js';
+import cvRoutes from './routes/cv.js';
 
 
 import dotenv from 'dotenv';
@@ -15,7 +16,8 @@ dotenv.config();
 app.use(cors());
 app.use('/posts',postRoutes);
 app.use('/users',userRoutes);
-
+app.use('/cv', cvRoutes);
+app.post('/uploads',express.static('uploads'));
 
 
 app.use(bodyParser.json());
