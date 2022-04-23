@@ -13,11 +13,11 @@ import useStyles from '../styles';
 import Input from '../Input';
 import { useDispatch } from 'react-redux';
 
-//initaliser par l'utilisateur
-const initialState={firstName:'' , lastName:'', entrepriseName:'', location:'', password:'' ,phone:'' ,adresse:'' ,email:'', dateNaissance:'', genre:'femme'};
+
+const initialState={name:'', entrepriseName:'', location:'', password:'' ,phone:'' ,adresse:'' ,email:'', dateNaissance:'', genre:''};
 
 const Profile = () => {
-    
+    const user= JSON.parse(localStorage.getItem('profile'));
     const classes=useStyles();
     const [isEntreprise , setIsEntreprise]=useState(false);
     const [showPassword , setShowPassword]=useState(false);
@@ -32,30 +32,23 @@ const Profile = () => {
      
     const handleSubmit=(e) =>{
         e.preventDefault();
-        console.log('data >>>> ',formData);
+        console.log('data : ',formData);
         //dispatch(signup(formData,history));
     };
     const handleChange=(e) =>{
           setFormData ({...formData , [e.target.name]: e.target.value});
     };
     
-    const switchMode =() =>{
-     setIsEntreprise ((prevIsEntreprise)=> !prevIsEntreprise)
-     handleShowPassword(false);
-    };
+    
 
     return ( 
-        <Container component="main" maxWidth="xs">
+        <Container component="main" maxWidth="gl">
             <Paper className={classes.paper} elevation={3}>
-                <Avatar className={classes.avatar}>
-                    <LockOutlinedIcon/>
-               </Avatar>
-               <Typography variant= "h5">{isEntreprise ? 'pour entreprise' : "pour chercheur d'emploi"}</Typography>
                <form className={classes.form} onSubmit={handleSubmit}>
                    <Grid container spacing={2}>
                       
-                       <Input name="firstName" label="Nom" handleChange ={handleChange} half value={formData.firstName}/>
-                       <Input name="lastName" label="Prénom" handleChange ={handleChange} half value={formData.lastName}/>
+                       <Input name="name" label="Nom Complet" handleChange ={handleChange}  value={formData.firstName}/>
+                       
                        { isEntreprise && (
                             <>
                                <Input name="entrepriseName" label="Nom entreprise" handleChange ={handleChange} half value={formData.entrepriseName}/>
@@ -71,7 +64,7 @@ const Profile = () => {
                        <FormLabel id="Date de naissance" >Date de naissance</FormLabel>
                        <Input name="dateNaissance" handleChange ={handleChange} type="date" value={formData.dateNaissance} />
 
-                       <FormLabel id="genre" >Genre</FormLabel>
+                       <FormLabel id="genre" >Genre *</FormLabel>
                        <RadioGroup
                          aria-labelledby="demo-controlled-radio-buttons-group"
                         name="genre"
@@ -79,20 +72,16 @@ const Profile = () => {
                         onChange={handleChange}
                        >
                         <FormControlLabel value="femme" control={<Radio />} label="Femme" />
-                        <FormControlLabel value="homme" control={<Radio />} label="Home" />
+                        <FormControlLabel value="homme" control={<Radio />} label="Homme" />
                      </RadioGroup>
 
 
                     </Grid>
                     <Button type='submit' fullwidth variant="contained" color="primary" className={classes.submit}>Modifier
                     </Button>
-                    <Grid container justify="flex-end">
-                         <Grid item>
-                             <Button onClick={switchMode}>
-                                {isEntreprise ? "pour les chercheurs d'opportunité" : "pour les chercheurs du ressources"} 
-                             </Button>
-                         </Grid>
-                    </Grid>
+                   
+                         
+                 
 
 
 
