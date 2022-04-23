@@ -2,11 +2,13 @@
 import Cv from '../models/cv.js';
 
 export const createCv = async (req,res) =>{
-    const cv=req.body;
-    const x=cv.cv;
+    const cv=req.file;
+    const x={};
+
+    console.log('cv   !! ',cv.path)
     
      
-     const newCv = new Cv({...x, creator: req.userId , date: new Date().toISOString()})
+     const newCv = new Cv({...x, selectedFilefile: cv.path, creator: req.userId , date: new Date().toISOString()})
      
 
     try { 

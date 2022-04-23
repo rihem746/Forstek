@@ -21,7 +21,7 @@ const CvPdf = () => {
         const formData = new FormData();
         formData.append("cv",cvData);
         console.log("cv::",cvData);
-        axios.post('//localhost:5000/upload', formData)
+        axios.post('//localhost:5000/cv', formData)
           .then((e)=>{console.log("success")})
             .catch((e)=>{console.log('Error')})
 

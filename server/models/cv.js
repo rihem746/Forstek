@@ -6,7 +6,8 @@ const userSchema = mongoose.Schema({
         type:Date,
         default: new Date()
     },
-    selectedFilefile:{ type: String,
+    selectedFilefile:{ 
+        type: String,
         default:'',
     }
 
