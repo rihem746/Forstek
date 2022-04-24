@@ -15,7 +15,7 @@ import "./VideoChat.css";
 
 import CallPageFooter from "./UI/CallPageFooter/CallPageFooter";
 
-const socket = io.connect('http://localhost:4000');
+const socket = io.connect('https://forstekvideo.herokuapp.com/');
 let peer = null;
 
 const Video = () => {
@@ -255,7 +255,7 @@ const Video = () => {
 
 <div className="right-side">
 <div className="content">
-  <h3>{callName}</h3>
+  <h3></h3>
 <video playsInline className="video-container" ref={userVideo} autoPlay />
 </div>
 </div>
