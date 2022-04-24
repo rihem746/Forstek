@@ -7,6 +7,7 @@ import PersonIcon from '@mui/icons-material/Person';
 
 import { AppBar, Toolbar,Avatar, Typography, Button} from '@material-ui/core';
 import logo from '../../images/logo.svg';
+import AddIcon from '@mui/icons-material/Add';
 
 
 import Box from '@mui/material/Box';
@@ -27,7 +28,7 @@ const Navbar = () => {
    
    const  classes= useStyles();
    const [user,setUser]= useState(JSON.parse(localStorage.getItem('profile'))) ;
-
+   const [currentId,setCurrentId]= useState(null);
    const [anchorElNav, setAnchorElNav] = useState(null);
    const [anchorElUser, setAnchorElUser] = useState(null);
 
@@ -127,7 +128,7 @@ const Navbar = () => {
            >
            </Typography>
            <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-           {user ? (
+           {(user?.result?.entreprise=='') ? (
            <Stack direction="row" spacing={3}>
            
              {pages.map((page) => (
@@ -150,8 +151,8 @@ const Navbar = () => {
           <Toolbar className={classes.toolbar}>
             <Avatar onClick={handleOpenUserMenu} className={classes.purple} alt={user?.result?.name} src={user?.result?.imageUrl}>{user?.result?.name.charAt(0)}</Avatar>
             {(user?.result?.entreprise !=='') ?(
-               <Button component={Link} to="/ajouterAnnonce" variant='contained' color="secondary">Ajouter Annonce</Button>
-            ):(<Button></Button>)}
+               <Button component={Link} to="/ajouterAnnonce"currentId={currentId} setCurrentId={setCurrentId} variant='contained' color="secondary"><AddIcon/> Ajouter Annonce</Button>
+            ):(<></>)}
           </Toolbar>
           </IconButton>
           </Tooltip>

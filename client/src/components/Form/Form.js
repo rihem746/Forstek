@@ -23,7 +23,7 @@ const Form = ({currentId, setCurrentId}) => {
 
    },[post]);
   const clear = () => {
-    setCurrentId(0);
+    //setCurrentId(0);
     setPostData({ job: '', description: '',tags: '',categorie:'', type: '', localisation:'' });
 };
 
@@ -42,7 +42,7 @@ const Form = ({currentId, setCurrentId}) => {
   const handleChange=(e) =>{
     switch(e.target.name){
       case 'tags':
-        setPostData({ ...postData, tags: e.target.value.split(',')});
+        setPostData({ ...postData, tags: e.target.value.join(',')});
       default:
         setPostData ({...postData , [e.target.name]: e.target.value});
     }

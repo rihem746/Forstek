@@ -137,7 +137,7 @@ const Home = () => {
              </Card>
           )}
           
-          <Form  currentId={currentId} setCurrentId={setCurrentId} />
+          
 
           
         </Container>

@@ -45,16 +45,33 @@ const  App =() => {
            <Route path="/auth" exact component={()=>(!user? <Auth/> : <Redirect to="/posts" />)} />
            <Route path="/inscription" exact component={()=>(!user? <Inscription /> : <Redirect to="/posts" />)} />
 
-
-           <Route path="/profiledata" exact component={Profile} />
+           
+           <Route path="/profiledata" >
+           <Container maxWidth="xl">
+             <Navbar />
+             <Profile />
+             <Footer />
+          </Container>
+          </Route>
            <Route path="/ajouterAnnonce" exact component={Form} />
 
-
-           <Route path="/cv" exact component={Cv} />
-           <Route path="/posts/:id"component={PostDetails} />
-
+          
+           <Route path="/cv" >
+           <Container maxWidth="xl">
+             <Navbar />
+             <Cv/>
+             <Footer />
+          </Container>
+          </Route>
+           <Route path="/posts/:id" >
+           <Container maxWidth="xl">
+             <Navbar />
+             <PostDetails/>
+             <Footer />
+          </Container>
+          </Route>
            <Route path="/video"component={Video} />
-
+             
          </Switch>
 
       </BrowserRouter>
