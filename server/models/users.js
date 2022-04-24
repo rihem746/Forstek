@@ -9,16 +9,18 @@ const userSchema = mongoose.Schema({
           default:''},
       location:{
           type: String,
-          default: null },
+          default:'' },
       id:{ type: String},
      telephone: {type: String,
-           default: null},
+           default: ''},
      adresse: {type: String,
-        default: null},
+        default: ''},
     datedenaiss:{
-        type: date
-    },
-    genre: {type: String}
+         type:String,
+            default:''
+        },
+    
+    genre: {type: String},
 
 
 

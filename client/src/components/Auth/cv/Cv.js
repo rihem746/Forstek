@@ -3,6 +3,7 @@ import './Cv.css';
 import { Button , Paper, Grid,Typography,Container} from '@material-ui/core';
 import { saveAs} from 'file-saver';
 
+
 import Box from '@mui/material/Box';
 import Stepper from '@mui/material/Stepper';
 import Step from '@mui/material/Step';
@@ -14,6 +15,7 @@ import Education from "./Education";
 import Experience from "./Experience";
 import Skills from "./Skills";
 import CvPdf from "./CvPdf";
+import axios from "axios";
 
 const steps = ["Information personelle", "Education", "Experience", "skills"];
 
@@ -33,15 +35,22 @@ const Cv=()=> {
                 {skill:'' },
         }
     );
-    console.log('data init >>>> ',formData);
+
     
       const FormTitles = ["Information personelle", "Education", "Experience", "skills"];
 
       const handleSubmit=(e) =>{
         e.preventDefault();
+        console.log(formData);
+        axios.post('/create-pdf',formData)
+          .then(()=>axios.get('fetch-pdf',{responseType: 'blob'}))
+          .then((res)=>{
+              const pdfBlob = new Blob([res.data], {type: 'application/pdf'})
+              saveAs(pdfBlob,'newPdf.pdf');
+          })
             
 
-        //dispatch(signup(formData,history));
+        
     };
 
     const PageDisplay = () => {

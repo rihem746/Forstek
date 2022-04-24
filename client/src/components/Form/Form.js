@@ -5,6 +5,8 @@ import {createPost} from '../../actions/posts';
 import useStyles from './styles';
 import Input from './Input';
 import { updatePost } from  '../../actions/posts';
+import ChipInput from 'material-ui-chip-input';
+
 
     
 const initialState = { job: '', description: '',tags: '',categorie:'', type: '', localisation:'' };
@@ -47,7 +49,12 @@ const Form = ({currentId, setCurrentId}) => {
 
 };
   
-  
+const handleAdd =(tag)=>{
+  setPostData([...postData, tag]);
+}
+const handleDelete =(tagToDelete)=>{
+ setPostData(postData.tags.filter((tag)=> tag!=tagToDelete));
+}
  
 
   if (!user?.result?.name) {
@@ -65,7 +72,14 @@ const Form = ({currentId, setCurrentId}) => {
          <Typography variant="h6">{currentId? 'Modification' : 'Création'} annonce </Typography>
          <Input name="job" label="Métier"handleChange ={handleChange} type="text"/>
          <Input name="description" label="Description"handleChange ={handleChange} />
-         <Input name="tags" label="Hachtags (coma separated)"handleChange ={handleChange} />
+         <ChipInput
+                style ={{margin: '10px 0'}}
+                value={postData.tags}
+                onAdd ={handleAdd}
+                onDelete={handleDelete}
+                label="Ajouter Hachtag *"
+                fullWidth
+                />
         <Input name="categorie" label="Catégorie"handleChange ={handleChange} />
          <Input name="type" label="Type"handleChange ={handleChange} />
          <Input name="localisation" label="Localisation"handleChange ={handleChange} />

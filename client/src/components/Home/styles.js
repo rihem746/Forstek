@@ -26,7 +26,8 @@ export default makeStyles (()=>({
     
       },
       SearchDiv:{
-        margin:'auto 0',
+        margin:'auto ',
+        color: 'rgb(255,255,255)',
       },
       parallax:{ 
         position:'relative'},

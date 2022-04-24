@@ -8,7 +8,7 @@ import useStyles from './styles';
 import Input from './Input';
 import { useDispatch } from 'react-redux';
 
-const initialState={firstName:'' , lastName:'', entrepriseName:'',email:'', location:'', password:'' ,confirmPassword :'' ,cv:''};
+const initialState={firstName:'' , lastName:'', entreprise:'',email:'', location:'', password:'' ,confirmPassword :'' ,cv:''};
 
 const Inscription = () => {
     
@@ -61,8 +61,8 @@ const Inscription = () => {
                        <Input name="lastName" label="Prénom" value={formData.lastName} handleChange ={handleChange} half />
                        { isEntreprise && (
                             <>
-                               <Input name="entrepriseName" label="Nom entreprise" value={formData.entrepriseName} handleChange ={handleChange} half/>
-                               <Input name="location" label="Localisation"handleChange ={handleChange} half/>
+                               <Input name="entreprise" label="Nom entreprise" value={formData.entreprise} handleChange ={handleChange} half/>
+                               <Input name="location" label="Localisation"handleChange ={handleChange} value={formData.location} half/>
                             </>
                        )}
                        <Input name="email" label="Adresse e-mail" value={formData.email} handleChange ={handleChange} type="email"/>

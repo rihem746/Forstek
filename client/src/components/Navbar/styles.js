@@ -67,6 +67,9 @@ export default makeStyles((theme) => ({
 
     color:'#fff'
 
+  },
+  page:{
+    textDecoration:'none',
   }
 
   

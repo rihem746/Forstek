@@ -22,3 +22,13 @@ export const signup = (formData,history)=> async(dispatch)=>{
         console.log(error);
     }
 };
+export const updateUser = (id,user)=>async(dispatch)=>{
+    try {
+       const {data} = await api.updateUser(id , user);
+       console.log("userUpdating:",data);
+       dispatch({type:'UPDATE',payload:data});
+  
+    } catch (error) {
+      console.log(error);
+    }
+  }

@@ -27,6 +27,9 @@ export const likePost = (id)=>API.patch(`/posts/${id}/likePost`);
 
 export const signIn=(formData)=> API.post('/users/signin', formData);
 export const signUp=(formData)=> API.post('/users/signup', formData);
+export const updateUser = (id,updatedUser)=>API.patch(`users/${id}` , updatedUser);
+
+
 
 export const createCv = (newCv)=> API.post('/cv' , newCv);
 

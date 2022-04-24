@@ -3,6 +3,7 @@ import useStyles from './styles';
 
 import {Link , useHistory ,useLocation} from 'react-router-dom';
 import {useDispatch} from 'react-redux';
+import PersonIcon from '@mui/icons-material/Person';
 
 import { AppBar, Toolbar,Avatar, Typography, Button} from '@material-ui/core';
 import logo from '../../images/logo.svg';
@@ -37,8 +38,10 @@ const Navbar = () => {
 
    const logout =() =>{
        dispatch({type: 'LOGOUT'});
-       history.push('/');
+      // history.push('/');
        setUser(null);
+       window.location.reload();
+
 
    };
 
@@ -46,6 +49,7 @@ const Navbar = () => {
      const token = user?.token;
 
      setUser(JSON.parse(localStorage.getItem('profile')));
+     console.log(user);
   } ,[location]);
  
    const handleOpenNavMenu = (event) => {
@@ -128,7 +132,7 @@ const Navbar = () => {
            
              {pages.map((page) => (
                <Link to={"/"+page}>
-                 <IconButton  color='warning' >
+                 <IconButton className={classes.page} style={{color:'rgb(251, 223, 223)'}} >
                  {page}
                  </IconButton>
                </Link>
@@ -144,14 +148,17 @@ const Navbar = () => {
           <Tooltip title="Voir les paramétres">
           <IconButton sx={{ p: 0 }}>
           <Toolbar className={classes.toolbar}>
-            <Avatar onClick={handleOpenUserMenu} className={classes.purple} alt={user.result.name} src={user.result.imageUrl}>{user.result.name.charAt(0)}</Avatar>
+            <Avatar onClick={handleOpenUserMenu} className={classes.purple} alt={user?.result?.name} src={user?.result?.imageUrl}>{user?.result?.name.charAt(0)}</Avatar>
+            {(user?.result?.entreprise !=='') ?(
+               <Button component={Link} to="/ajouterAnnonce" variant='contained' color="secondary">Ajouter Annonce</Button>
+            ):(<Button></Button>)}
           </Toolbar>
           </IconButton>
           </Tooltip>
 
         ):(
           <div>
-            <Button component={Link} to="auth" variant='contained' color="secondary">Se Connecter</Button>
+            <Button component={Link} to="auth" variant='contained' color="secondary"><PersonIcon></PersonIcon> Se Connecter</Button>
           </div>
         )}
 

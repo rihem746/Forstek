@@ -2,6 +2,7 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
 import cors from 'cors';
+import pdf from 'html-pdf';
 
 import postRoutes from './routes/posts.js';
 import userRoutes from './routes/users.js';
@@ -23,7 +24,19 @@ app.post('/uploads',express.static('uploads'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
+app.post('/create-pdf',(req,res)=>{
+    pdf.create(pdfTemplate(req.body),{}).toFile('result.pdf',(err)=>{
+       
+      if (err) {
+        return  res.send(Promise.reject());
+      }
+      return res.send(Promise.resolve());
+    });
+});
 
+app.get('fetch-pdf', (req,res)=>{
+  res.sendFile(`${__dirname}/result.pdf`)
+});
 
 const PORT= process.env.PORT ||5000;
 

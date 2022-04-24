@@ -1,6 +1,7 @@
 import  bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import User from '../models/users.js';
+import mongoose from 'mongoose';
 
 
 
@@ -46,5 +47,16 @@ export const signup = async( req , res)=>{
         res.status(500).json({message: 'something went wrong.'});
        }
 }
+export const updateUser = async (req,res) => {
+  const {id : _id} = req.params;
+  const user =req.body;
 
+  if (!mongoose.Types.ObjectId.isValid(_id)) return res.status(404).send('No user with that id');
+
+  const {data}=await User.findByIdAndUpdate(_id, {...user ,_id},{new:true});
+  
+
+  res.json(user);
+  
+}
 

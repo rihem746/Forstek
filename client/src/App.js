@@ -6,6 +6,8 @@ import Auth from './components/Auth/Auth';
 import { BrowserRouter , Switch , Route, Redirect } from 'react-router-dom';
 
 import Navbar from './components/Navbar/Navbar';
+import Form from './components/Form/Form';
+
 import Inscription from './components/Auth/Inscription';
 import Profile from './components/Auth/donneePersonelle/Profile';
 import Cv from './components/Auth/cv/Cv';
@@ -33,6 +35,9 @@ const  App =() => {
 
 
            <Route path="/profiledata" exact component={Profile} />
+           <Route path="/ajouterAnnonce" exact component={Form} />
+
+
            <Route path="/cv" exact component={Cv} />
            <Route path="/posts/:id"component={PostDetails} />
 

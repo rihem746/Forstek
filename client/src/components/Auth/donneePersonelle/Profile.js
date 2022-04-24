@@ -2,19 +2,20 @@ import React, { useState } from 'react';
 import {Avatar, Button , Paper, Grid,Typography,Container} from '@material-ui/core';
 import { Link, useHistory } from 'react-router-dom';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
+import { useSelector } from 'react-redux';
 
 import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormLabel from '@mui/material/FormLabel';
 
-
+import {updateUser} from '../../../actions/auth';
 import useStyles from '../styles';
 import Input from '../Input';
 import { useDispatch } from 'react-redux';
 
-
-const initialState={name:'', entrepriseName:'', location:'', password:'' ,phone:'' ,adresse:'' ,email:'', dateNaissance:'', genre:''};
+const user= JSON.parse(localStorage.getItem('profile'));
+const initialState={name:user?.result?.name, entreprise:user?.result?.entreprise, location:user?.result?.location, password:user?.result?.password ,telephone:user?.result?.telephone ,adresse:user?.result?.adresse,email:user?.result?.email, datedenaiss:user?.result?.datedenaiss, genre:user?.result?.genre};
 
 const Profile = () => {
     const user= JSON.parse(localStorage.getItem('profile'));
@@ -33,7 +34,7 @@ const Profile = () => {
     const handleSubmit=(e) =>{
         e.preventDefault();
         console.log('data : ',formData);
-        //dispatch(signup(formData,history));
+       dispatch(updateUser(user.result._id,formData));
     };
     const handleChange=(e) =>{
           setFormData ({...formData , [e.target.name]: e.target.value});
@@ -47,7 +48,7 @@ const Profile = () => {
                <form className={classes.form} onSubmit={handleSubmit}>
                    <Grid container spacing={2}>
                       
-                       <Input name="name" label="Nom Complet" handleChange ={handleChange}  value={formData.firstName}/>
+                       <Input name="name" label="Nom Complet" handleChange ={handleChange}  value={formData.name}/>
                        
                        { isEntreprise && (
                             <>
@@ -58,11 +59,11 @@ const Profile = () => {
                        <Input name="email" label="Adresse e-mail" handleChange ={handleChange} type="email" value={formData.email}/>
                        <Input name="password" label="Mot de passe" handleChange ={handleChange} type={showPassword ? "text" : "password"} handleShowPassword={handleShowPassword} value={formData.password} />
 
-                       <Input name="phone" label="Téléphone" handleChange ={handleChange} value={formData.phone}/>
+                       <Input name="telephone" label="Téléphone" handleChange ={handleChange} value={formData.telephone}/>
                        <Input name="adresse" label="Adresse" handleChange ={handleChange} value={formData.adresse}/>
 
-                       <FormLabel id="Date de naissance" >Date de naissance</FormLabel>
-                       <Input name="dateNaissance" handleChange ={handleChange} type="date" value={formData.dateNaissance} />
+                       <FormLabel id="datedenaiss" >Date de Naissance</FormLabel>
+                       <Input name="datedenaiss" handleChange ={handleChange} type="date" value={formData.datedenaiss} />
 
                        <FormLabel id="genre" >Genre *</FormLabel>
                        <RadioGroup

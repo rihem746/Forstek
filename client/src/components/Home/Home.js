@@ -1,5 +1,5 @@
 import React ,{useEffect, useState} from 'react';
-import {TextField, Button ,Container ,Paper, Grow, Grid , Card} from '@material-ui/core';
+import {TextField, Button ,Container ,Paper, Grow, Grid , Card, Typography, GridList} from '@material-ui/core';
 import Stack from '@mui/material/Stack';
 import Posts from '../posts/Posts';
 import Form from '../Form/Form';
@@ -64,24 +64,22 @@ const Home = () => {
   
   
     return ( 
-        <Grow in>
+        
         <Container container justify="space-between" alignItems="stretch" spacing={3} maxWidth="1500px">
-        <Stack spacing={2}>
-        <Card className={classes.color}
-      sx={{
-        p: 2,
-        margin: 'auto',
-        width: '100%',
-        flexGrow: 1,
-        Color: '#d3d3d3',
-      }}
-    >
+        
+        <Card className={classes.color} >
       <Grid container spacing={3} >
         
-        <Grid item  spacing={1}xs={10} sm container>
-          <h1>Hack votre chemin vers le</h1>
-          <h1 style={{color:'rgb(242, 83, 49)'}}>travail de rêve</h1>
-          <Grid item xs container direction="column" spacing={2} >
+        <Grid item  spacing={2} xs={10} sm container>
+          <Grid>
+          <Typography  variant='h3'style={{color:'rgb(255, 255, 255)'}}>Votre chemin vers le  </Typography>
+
+          </Grid>
+          <Grid>
+          <Typography  variant='h3'style={{color:'rgb(242, 83, 49)'}}>   travail de rêve</Typography>
+
+          </Grid>
+          <Grid item xs container direction="row" spacing={2} >
             <Grid item className={classes.SearchDiv}>
              <TextField  
              name="search"
@@ -91,6 +89,8 @@ const Home = () => {
              onKeyPress={handleKeyPress}
              fullWidth
              value={search}
+             style={{color: 'rgb(255,255,255)'}}
+
              onChange={(e)=> setSearch(e.target.value)}
              InputProps={{
               endAdornment: (
@@ -112,7 +112,7 @@ const Home = () => {
           </Grid>
           </Grid>
         </Grid>
-        <Grid item  spacing ={2}>
+        <Grid item  spacing ={1}>
          
           <div className={classes.parallax} mx-auto style={{maxwidth: '526px' }}>
                 <div className={classes.parallax}  data-depth="0.1"><img src={layer1} alt="Layer" /></div>
@@ -139,10 +139,10 @@ const Home = () => {
           
           <Form  currentId={currentId} setCurrentId={setCurrentId} />
 
-          </Stack>
+          
         </Container>
 
-      </Grow>
+      
      );
 }
  
