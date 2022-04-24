@@ -71,16 +71,15 @@ const Home = () => {
       <Grid container spacing={3} >
         
         <Grid item  spacing={2} xs={10} sm container>
-          <Grid>
-          <Typography  variant='h3'style={{color:'rgb(255, 255, 255)'}}>Votre chemin vers le  </Typography>
 
-          </Grid>
-          <Grid>
-          <Typography  variant='h3'style={{color:'rgb(242, 83, 49)'}}>   travail de rêve</Typography>
-
-          </Grid>
-          <Grid item xs container direction="row" spacing={2} >
+        
+          <Grid item container direction="row" spacing={1} >
             <Grid item className={classes.SearchDiv}>
+
+          <Typography className={classes.titre} variant='h3'style={{color:'rgb(255, 255, 255)'}}>Votre chemin vers le  </Typography>
+          <Typography className={classes.titre} variant='h3'style={{color:'rgb(242, 83, 49)'}}>   travail de rêve</Typography>
+
+
              <TextField  
              name="search"
              variant='outlined'
@@ -92,7 +91,11 @@ const Home = () => {
              style={{color: 'rgb(255,255,255)'}}
 
              onChange={(e)=> setSearch(e.target.value)}
+             InputLabelProps={{
+              style: { color: '#fff' },
+            }}
              InputProps={{
+              className: classes.textfiled,
               endAdornment: (
                 <>
                 <ChipInput
@@ -102,6 +105,10 @@ const Home = () => {
                 onDelete={handleDelete}
                 label="Rechercher Hachtags"
                 variant="outlined"
+                InputLabelProps={{
+                  style: { color: '#fff' },
+                }}
+                InputProps={{ className: classes.textfiled}}
                 />
                 <Button onClick={searchPost} color='secondary' >
                 <SearchIcon />
