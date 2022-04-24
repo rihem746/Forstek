@@ -4,6 +4,13 @@ export default makeStyles (()=>({
     ul:{
         justifyContent: 'space-around',
     },
+    titre:{
+      textAlign:'center',
+    },
+    textfiled:{
+      color:'#fee',
+      backgroundColor:'#282435',
+    },
     root: {
         
         backgroundColor:'#444',
@@ -28,6 +35,7 @@ export default makeStyles (()=>({
       SearchDiv:{
         margin:'auto ',
         color: 'rgb(255,255,255)',
+        width: '90%',
       },
       parallax:{ 
         position:'relative'},

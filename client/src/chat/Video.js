@@ -196,10 +196,10 @@ const Video = () => {
   {!calling && (
     <div className="left-side">
       <div className="content">
-        <h2>Premium video meetings. Now free for everyone.</h2>
+        <h2>Réunions vidéo premium. Maintenant gratuit pour tout le monde.</h2>
         <p>
-          We re-engineered the service we built for secure business
-          meetings, Forstek Meet, to make it free and available for all.
+        Nous avons repensé le service que nous avons construit pour une entreprise sécurisée
+        réunions, Forstek Meet, pour le rendre gratuit et accessible à tous.
         </p>
         <div className="action-btn">
 
