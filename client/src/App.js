@@ -22,14 +22,26 @@ const  App =() => {
 
   return (
      <BrowserRouter>
-        <Container maxWidth="xl">
-        
-         <Navbar />
          <Switch>
+
            <Route path="/" exact component={()=><Redirect to="/posts" />}/>
-           <Route path="/posts" exact component={Home}/>
-           <Route path="/posts/search" exact component={Home}/>
-  
+           
+           <Route path="/posts" >
+           <Container maxWidth="xl">
+             <Navbar />
+             <Home />
+             <Footer />
+          </Container>
+
+          </Route>
+           <Route path="/posts/search">
+           <Container maxWidth="xl">
+             <Navbar />
+             <Home />
+             <Footer />
+          </Container>
+          </Route>
+
            <Route path="/auth" exact component={()=>(!user? <Auth/> : <Redirect to="/posts" />)} />
            <Route path="/inscription" exact component={()=>(!user? <Inscription /> : <Redirect to="/posts" />)} />
 
@@ -44,8 +56,7 @@ const  App =() => {
            <Route path="/video"component={Video} />
 
          </Switch>
-         <Footer />
-        </Container>
+
       </BrowserRouter>
   );
 }
