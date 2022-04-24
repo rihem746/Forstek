@@ -11,7 +11,15 @@ const userSchema = mongoose.Schema({
           type: String,
           default: null },
       id:{ type: String},
-     
+     telephone: {type: String,
+           default: null},
+     adresse: {type: String,
+        default: null},
+    datedenaiss:{
+        type: date
+    },
+    genre: {type: String}
+
 
 
 })
