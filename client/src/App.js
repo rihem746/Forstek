@@ -20,27 +20,58 @@ const  App =() => {
 
   return (
      <BrowserRouter>
-        <Container maxWidth="xl">
-        
-         <Navbar />
          <Switch>
+
            <Route path="/" exact component={()=><Redirect to="/posts" />}/>
-           <Route path="/posts" exact component={Home}/>
-           <Route path="/posts/search" exact component={Home}/>
-  
+           
+           <Route path="/posts" >
+           <Container maxWidth="xl">
+             <Navbar />
+             <Home />
+             <Footer />
+          </Container>
+
+          </Route>
+           <Route path="/posts/search">
+           <Container maxWidth="xl">
+             <Navbar />
+             <Home />
+             <Footer />
+          </Container>
+          </Route>
+
            <Route path="/auth" exact component={()=>(!user? <Auth/> : <Redirect to="/posts" />)} />
            <Route path="/inscription" exact component={()=>(!user? <Inscription /> : <Redirect to="/posts" />)} />
 
 
-           <Route path="/profiledata" exact component={Profile} />
-           <Route path="/cv" exact component={Cv} />
-           <Route path="/posts/:id"component={PostDetails} />
+           <Route path="/profiledata"  >
+           <Container maxWidth="xl">
+             <Navbar />
+             <Profile />
+             <Footer />
+          </Container>
+          </Route>
+
+           <Route path="/cv"  >
+           <Container maxWidth="xl">
+             <Navbar />
+             <Cv />
+             <Footer />
+          </Container>
+          </Route>
+
+           <Route path="/posts/:id" >
+           <Container maxWidth="xl">
+           <Navbar />
+           <PostDetails />
+           <Footer />
+        </Container>
+        </Route>
 
            <Route path="/video"component={Video} />
 
          </Switch>
-         <Footer />
-        </Container>
+
       </BrowserRouter>
   );
 }
