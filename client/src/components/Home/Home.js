@@ -38,6 +38,7 @@ const Home = () => {
     const page=query.get('page') || 1;
     const searchQuery= query.get('searchQuery');
     const [tags,setTags]=useState([]);
+    const user= JSON.parse(localStorage.getItem('profile'));
     
     
   const handleKeyPress =(e)=> {
@@ -103,7 +104,7 @@ const Home = () => {
                 value={tags}
                 onAdd ={handleAdd}
                 onDelete={handleDelete}
-                label="Rechercher Hachtags"
+                label="Hachtags"
                 variant="outlined"
                 InputLabelProps={{
                   style: { color: '#fff' },
@@ -144,8 +145,10 @@ const Home = () => {
              </Card>
           )}
           
-          
-
+          {(user?.result?.entreprise !=='') ?(
+               <Form  currentId={currentId} setCurrentId={setCurrentId} />
+            ):(<></>)}
+         
           
         </Container>
 

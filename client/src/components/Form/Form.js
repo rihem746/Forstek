@@ -5,8 +5,6 @@ import {createPost} from '../../actions/posts';
 import useStyles from './styles';
 import Input from './Input';
 import { updatePost } from  '../../actions/posts';
-import ChipInput from 'material-ui-chip-input';
-
 
     
 const initialState = { job: '', description: '',tags: '',categorie:'', type: '', localisation:'' };
@@ -23,7 +21,7 @@ const Form = ({currentId, setCurrentId}) => {
 
    },[post]);
   const clear = () => {
-    //setCurrentId(0);
+    setCurrentId(0);
     setPostData({ job: '', description: '',tags: '',categorie:'', type: '', localisation:'' });
 };
 
@@ -42,26 +40,21 @@ const Form = ({currentId, setCurrentId}) => {
   const handleChange=(e) =>{
     switch(e.target.name){
       case 'tags':
-        setPostData({ ...postData, tags: e.target.value.join(',')});
+        setPostData({ ...postData, tags: e.target.value.split(',')});
       default:
         setPostData ({...postData , [e.target.name]: e.target.value});
     }
 
 };
   
-const handleAdd =(tag)=>{
-  setPostData([...postData, tag]);
-}
-const handleDelete =(tagToDelete)=>{
- setPostData(postData.tags.filter((tag)=> tag!=tagToDelete));
-}
+  
  
 
   if (!user?.result?.name) {
     return (
       <Paper>
         <Typography>
-          S'il vous plait connectez vous afin de publier vos propres annonces
+         <></>
         </Typography>
       </Paper>
     )
@@ -72,21 +65,14 @@ const handleDelete =(tagToDelete)=>{
          <Typography variant="h6">{currentId? 'Modification' : 'Création'} annonce </Typography>
          <Input name="job" label="Métier"handleChange ={handleChange} type="text"/>
          <Input name="description" label="Description"handleChange ={handleChange} />
-         <ChipInput
-                style ={{margin: '10px 0'}}
-                value={postData.tags}
-                onAdd ={handleAdd}
-                onDelete={handleDelete}
-                label="Ajouter Hachtag *"
-                fullWidth
-                />
+         <Input name="tags" label="Hachtags (séparés par virgule)"handleChange ={handleChange} />
         <Input name="categorie" label="Catégorie"handleChange ={handleChange} />
          <Input name="type" label="Type"handleChange ={handleChange} />
          <Input name="localisation" label="Localisation"handleChange ={handleChange} />
         
 
-         <Button className={classes.buttonSubmit} variant="contained" color="primary" size="large" type="submit" fullWidth>Submit</Button>
-        <Button variant="contained" color="secondary" size="small" onClick={clear} fullWidth>Clear</Button>
+         <Button className={classes.buttonSubmit} variant="contained" color="primary" size="large" type="submit" fullWidth>enregistrer</Button>
+        <Button variant="contained" color="secondary" size="small" onClick={clear} fullWidth>Nettoyer </Button>
       </form>
     </Paper>
   );

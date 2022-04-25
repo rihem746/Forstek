@@ -42,7 +42,7 @@ const Post = ({post ,setCurrentId}) => {
 
        
           <CardHeader
-            action={(user?.result.googleId ===post?.creator || user?.result?._id === post?.creator ) && (
+            action={(user?.result?.googleId ===post?.creator || user?.result?._id === post?.creator ) && (
               <Button size="small" color="primary" onClick={()=>dispatch(deletePost(post._id))}>
                 <DeleteIcon fontSize='small'></DeleteIcon>
               </Button>
@@ -54,7 +54,7 @@ const Post = ({post ,setCurrentId}) => {
              <CardContent onClick={openPost}>
                 <Typography gutterBottom variant="h5" component="h4" className={classes.title}>{post.entreprise}</Typography>
                 <Typography variant='body2' color='textSecondary'>{post.tags.map((tag)=>`#${tag}`)}</Typography>
-                <Typography variant="body2" color="textSecondary" component="p" className={classes.details}>{post.description}</Typography>
+                
             </CardContent>
           </ButtonBase>
 
@@ -62,7 +62,7 @@ const Post = ({post ,setCurrentId}) => {
           <Button size="small" color="primary" disabled={!user?.result} onClick={()=>dispatch(likePost(post._id))}>
              <Likes />
           </Button>
-          {(user?.result.googleId ===post?.creator || user?.result?._id === post?.creator ) && (
+          {(user?.result?.googleId ===post?.creator || user?.result?._id === post?.creator ) && (
              <Button style={{color:'white'}} size="small" onClick={()=>setCurrentId(post._id)}>
              <MoreHorizonIcon fontSize='default'  />
            </Button>  

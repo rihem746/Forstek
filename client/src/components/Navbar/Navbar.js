@@ -22,7 +22,7 @@ import Stack from '@mui/material/Stack';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 
-const pages = ['Annonces Sauvegardées','cv'];
+const pages = ['cv'];
 
 const Navbar = () => {
    
@@ -150,9 +150,7 @@ const Navbar = () => {
           <IconButton sx={{ p: 0 }}>
           <Toolbar className={classes.toolbar}>
             <Avatar onClick={handleOpenUserMenu} className={classes.purple} alt={user?.result?.name} src={user?.result?.imageUrl}>{user?.result?.name.charAt(0)}</Avatar>
-            {(user?.result?.entreprise !=='') ?(
-               <Button component={Link} to="/ajouterAnnonce"currentId={currentId} setCurrentId={setCurrentId} variant='contained' color="secondary"><AddIcon/> Ajouter Annonce</Button>
-            ):(<></>)}
+            
           </Toolbar>
           </IconButton>
           </Tooltip>

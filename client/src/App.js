@@ -27,14 +27,14 @@ const  App =() => {
            <Route path="/" exact component={()=><Redirect to="/posts" />}/>
            
            <Route path="/posts" >
-           <Container maxWidth="xl">
+           <Container maxWidth="xl" exact>
              <Navbar />
              <Home />
              <Footer />
           </Container>
 
           </Route>
-           <Route path="/posts/search">
+           <Route path="/posts/search" exact>
            <Container maxWidth="xl">
              <Navbar />
              <Home />
