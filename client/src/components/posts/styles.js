@@ -24,5 +24,3 @@ export default makeStyles((theme) => ({
     backgroundColor: '#d3d3d3',
   },
 }));
-
-
