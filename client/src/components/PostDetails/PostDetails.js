@@ -7,6 +7,21 @@ import moment from 'moment';
 import {useParams , useHistory} from 'react-router-dom';
 import useStyles from './styles';
 import {getPost , getPostsBySearch} from '../../actions/posts';
+
+import { ChatEngine } from 'react-chat-engine';
+
+export function App() {
+	return (
+		<ChatEngine
+			height='100vh'
+			userName='rihem'
+			userSecret='123123'
+			projectID='720fb0e6-a50e-418e-b4fc-5af90cd61611'
+		/>
+	);
+}
+
+
 const PostDetails = () => {
     
     const {post,posts,isLoading}=useSelector((state)=>state.posts);
@@ -41,7 +56,7 @@ const PostDetails = () => {
 
     const recommendedPosts= posts.filter(({ _id })=> _id !==post._id);
     const openPost=(_id) =>{
-       history.push(`/posts/${_id}`);
+       history.push(`/post/${_id}`);
     }
 
     return ( 
@@ -60,6 +75,11 @@ const PostDetails = () => {
           <Divider style={{ margin: '20px 0' }} />
         </div>
       </div>
+
+
+<App />
+
+
       {recommendedPosts.length && (
         <div className={classes.section}>
           <Typography gutterBottom variant="h5">Vous pouvez voir aussi:</Typography>

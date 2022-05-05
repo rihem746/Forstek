@@ -31,13 +31,14 @@ const Post = ({post ,setCurrentId}) => {
       
   };
   const openPost =()=>{
-        history.push(`/posts/${post._id}`);
+        history.push(`/post/${post._id}`);
+        console.log('zz')
     };
   
 
     return ( 
         <Card className={classes.Card} raised elevation={6}>
-        <ButtonBase
+        <Card
          className={classes.cardActions}>
 
        
@@ -51,12 +52,13 @@ const Post = ({post ,setCurrentId}) => {
             subheader={moment(post.date).fromNow()}
           />
 
-             <CardContent onClick={openPost}>
+             <CardContent >
+               <Button onClick={openPost}>
                 <Typography gutterBottom variant="h5" component="h4" className={classes.title}>{post.entreprise}</Typography>
                 <Typography variant='body2' color='textSecondary'>{post.tags.map((tag)=>`#${tag}`)}</Typography>
-                
+            </Button>
             </CardContent>
-          </ButtonBase>
+          </Card>
 
         <CardActions disableSpacing className={classes.cardActions}>
           <Button size="small" color="primary" disabled={!user?.result} onClick={()=>dispatch(likePost(post._id))}>

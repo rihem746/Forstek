@@ -63,7 +63,7 @@ const  App =() => {
              <Footer />
           </Container>
           </Route>
-           <Route path="/posts/:id" >
+           <Route path="/post/:id" >
            <Container maxWidth="xl">
              <Navbar />
              <PostDetails/>
